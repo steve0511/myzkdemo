@@ -1,0 +1,30 @@
+# System specific files
+*~
+._.*
+.DS_Store
+
+# Eclipse files and directories
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA project stuff
+*.iml
+*.ipr
+*.iws
+.idea
+.idea_modules
+
+*.log
+
+
+
+# Directories created during the build process
+target/
+test-output/
+
+generated/
+
+dps-conf/application.conf
+
+dist/
