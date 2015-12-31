@@ -1,10 +1,13 @@
 package com.stevex.zkdemo;
 
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.ACL;
+import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.security.acl.Acl;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -25,11 +28,16 @@ public class ZKCreateNode implements Watcher {
             zk.create("/test3", "testdata3".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL, new ZKCallBack(), "I am Context");
             zk.create("/test4", "testdata4".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT_SEQUENTIAL, new ZKCallBack(), "I am Context");
             Thread.sleep(10000);
+            Stat stat = new Stat();
+            System.out.println(new String(zk.getData("/test2", new ZKCreateNode(), stat)));
+            System.out.println(stat.getCzxid()+","+stat.getMzxid()+","+stat.getVersion());
         }
         catch(IOException ex){
             logger.error("create node to zk error",ex);
         } catch (InterruptedException e) {
 
+        } catch (KeeperException e) {
+            logger.error("create node to zk error", e);
         }
     }
 
