@@ -23,6 +23,8 @@
 
     <modules>
         <module>ch2</module>
+        <module>ch4</module>
+        <module>ch7</module>
     </modules>
 
     <dependencyManagement>
@@ -30,6 +32,11 @@
             <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
                 <version>${curator.version}</version>
             </dependency>
             <dependency>
